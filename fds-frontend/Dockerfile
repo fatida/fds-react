@@ -5,11 +5,14 @@ WORKDIR /app
 
 COPY package.json .
 
+RUN npm install -g serve
+
 RUN npm install
 
 COPY . .
 
-CMD [ "npm", "start" ]
+RUN npm run build
 
+CMD [ "serve", "-s", "build" ]
 
 
